@@ -1,0 +1,14 @@
+﻿<Window x:Name="frmPrincipal" x:Class="CrudCSharpSql.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CRUD com C#" Height="159.5" Width="307.5">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.523,0.012">
+            <MenuItem x:Name="mniPrincipal" Header="Pessoas" Width="136">
+                <MenuItem x:Name="mniCadastro" Header="Cadastro" HorizontalAlignment="Left" Width="140" Click="mniCadastro_Click"/>
+                <MenuItem x:Name="mniPEE" Header="Pesquisar/Editar/Excluir" HorizontalAlignment="Left" Width="209" Margin="0,0,-1,0" Click="mniPEE_Click"/>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
