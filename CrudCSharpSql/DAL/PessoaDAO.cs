@@ -11,6 +11,8 @@ namespace CrudCSharpSql.DAL
     public class PessoaDAO : intPessoaDAO
     {
         Conexao conexaoBD = new Conexao();
+        SqlDataReader dataReader;
+
         public String mensagem;
         public void CadastrarPessoa(Pessoa pessoa)
         {
@@ -47,8 +49,38 @@ namespace CrudCSharpSql.DAL
 
         public Pessoa PesquisarPessoaPorID(Pessoa pessoa)
         {
-            throw new NotImplementedException();
-        }
+            {
+                this.mensagem = "";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = @"select * from where id  = @id";
+                cmd.Parameters.AddWithValue("@id", pessoa.id);
+                
+
+                try
+                {
+                    cmd.Connection = conexaoBD.Conectar();
+                    dataReader = cmd.ExecuteReader(); // consultar
+                    if (dataReader.HasRows) // verificar se tem dados 
+                    {
+                        dataReader.Read();
+                        pessoa.nome = dataReader["nome"].ToString();
+                        pessoa.rg = dataReader["rg"].ToString();
+                        pessoa.cpf = dataReader["cpf"].ToString();
+                    }
+                    else
+                    {
+                        pessoa.id = 0;
+                    }
+                    dataReader.Close();
+                    conexaoBD.Desconectar();
+                    
+                }
+                catch (SqlException e)
+                {
+
+                    this.mensagem = e.ToString();
+                }
+                return pessoa;
 
         public List<Pessoa> PesquisarPessoaPorNome(Pessoa pessoa)
         {
