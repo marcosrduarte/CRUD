@@ -26,8 +26,15 @@ namespace CrudCSharpSql.Apresentacao
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            DAL.testeCadastro teste = new DAL.testeCadastro();
-            teste.testar();
+            List<String> dadosPessoa = new List<string>();
+            dadosPessoa.Add("0");
+            dadosPessoa.Add(txbNome.Text);
+            dadosPessoa.Add(txbRG.Text);
+            dadosPessoa.Add(txbCPF.Text);
+
+            Modelo.Controle controle = new Modelo.Controle();
+            controle.CadastrarPessoa(dadosPessoa);
+            MessageBox.Show(controle.mensagem);
         }
     }
 }

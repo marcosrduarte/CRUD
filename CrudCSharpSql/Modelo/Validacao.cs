@@ -13,11 +13,13 @@ namespace CrudCSharpSql.Modelo
 
         public void ValidarDados(List<String> dadosPessoas)
         {
+            this.mensagem = "";
+
             if (dadosPessoas[1].Length > 30)
                 this.mensagem = "Nome com mais de 30 caracteres \n";
             if (dadosPessoas[2].Length > 10)
                 this.mensagem += "Rg com mais de 10 caracteres \n";
-            if (dadosPessoas[3].Length < 13)
+            if (dadosPessoas[3].Length > 13)
                 this.mensagem += "CPF com mais de 13 caracteres \n";
 
             try
