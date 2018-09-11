@@ -16,9 +16,11 @@ namespace CrudCSharpSql.DAL
         {
             this.mensagem = "";
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"insert into Pessoas (nome, rg, cpf)
-                        values 
-                        ('teste', '123', '456')";
+            cmd.CommandText = @"insert into Pessoas (nome, rg, cpf) values (@nome, @rg, @cpf)";
+            cmd.Parameters.AddWithValue("@nome", pessoa.nome);
+            cmd.Parameters.AddWithValue("@rg", pessoa.rg);
+            cmd.Parameters.AddWithValue("@cpf", pessoa.cpf);
+
             try
             {
                 cmd.Connection = conexaoBD.Conectar();
